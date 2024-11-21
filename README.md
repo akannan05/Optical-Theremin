@@ -4,5 +4,7 @@
 
 ## Circuit Construction
 
+The main circuit 
+
 ## Analysis
 
