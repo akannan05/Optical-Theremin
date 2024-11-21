@@ -34,28 +34,18 @@ For the main functionality with LDRs, the following circuit board diagram was us
 3 Analog pins are used to measure the voltage after the resistor, after the first LDR, and after the second LDR, respectively. With this information, we can calculate the voltage over each component in the circuit, which we will note as $V_R, V_1, V_2, V_3$. 
 
 Since the resistance of the resistor is known ($R = 1M$), we can use Ohm's Law to calculate the current in the circuit:
-$$
-V = IR
-$$
-$$
-I = \frac{V_R}{1\cdot 10^6}
-$$
+$$V = IR$$
+$$I = \frac{V_R}{1\cdot 10^6}$$
 
 Using this, we can then backtrack and calculate the resistances of each photoresistor $(R_1, R_2, R_3)$ using:
-$$
-R_i = \frac{V_i}{I} 
-$$ 
+$$R_i = \frac{V_i}{I} $$ 
 
 From the [datasheet](https://yourduino.com/docs/Photoresistor-5516-datasheet.pdf), it tells us that the gamma characteristic of the specific LDR we are working with is:
-$$
-\gamma = \log \left( \frac{R_{10}}{R_{100}} \right)
-$$ 
+$$\gamma = \log \left( \frac{R_{10}}{R_{100}} \right)$$ 
 Where $R_{10}, R_{100}$ are the resistances at 10, and 100 lux respectively. Since we don't have a way of measuring the resistance at a specific lux, we instead calculate the resistance at two voltages, one an order of magnitude higher than the other. 
 
 By doing so we can calculate the gamma characteristic in the Arduino LDRs, and use this to come up with an inverse squared relationship between the light intensity and the resistance of the LDR. 
-$$
-R = I^{-\gamma}
-$$
+$$R = I^{-\gamma}$$
 
 ## Analysis
 
